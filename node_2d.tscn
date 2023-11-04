@@ -1,3 +1,27 @@
-[gd_scene format=3 uid="uid://cl1mmdds7sbyw"]
+[gd_scene load_steps=4 format=3 uid="uid://cl1mmdds7sbyw"]
 
-[node name="Node2D" type="Node2D"]
+[ext_resource type="Texture2D" uid="uid://bm6mwbqjtatq" path="res://good_walk1.png" id="1_u7jua"]
+[ext_resource type="Texture2D" uid="uid://bkt63pyj5qce1" path="res://good_walk2.png" id="2_xoj44"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nfavc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_u7jua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xoj44")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Player" type="Area2D"]
+position = Vector2(487, 219)
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nfavc")
+animation = &"walk"
+frame_progress = 0.958002
