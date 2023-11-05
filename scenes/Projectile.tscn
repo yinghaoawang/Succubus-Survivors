@@ -19,4 +19,4 @@ texture = ExtResource("2_v7cw8")
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_d2u04")
 
-[node name="Muzzle" type="Marker2D" parent="."]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
