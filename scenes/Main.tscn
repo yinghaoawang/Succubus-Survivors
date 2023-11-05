@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://i02j1vjryb8i"]
 
-[ext_resource type="PackedScene" uid="uid://cl1mmdds7sbyw" path="res://player.tscn" id="1_2ywsv"]
-[ext_resource type="Script" path="res://Main.gd" id="1_nq3up"]
-[ext_resource type="PackedScene" path="res://mob.tscn" id="2_nw606"]
-[ext_resource type="PackedScene" uid="uid://ciikr3q5806gn" path="res://HUD.tscn" id="4_6iigs"]
+[ext_resource type="Script" path="res://scripts/Main.gd" id="1_aq0a0"]
+[ext_resource type="PackedScene" uid="uid://drmaca26pjuuf" path="res://scenes/mob.tscn" id="2_buypo"]
+[ext_resource type="PackedScene" uid="uid://cl1mmdds7sbyw" path="res://scenes/player.tscn" id="3_nvqf1"]
+[ext_resource type="PackedScene" uid="uid://ciikr3q5806gn" path="res://scenes/HUD.tscn" id="4_hc2h3"]
 
 [sub_resource type="Curve2D" id="Curve2D_x8quo"]
 _data = {
@@ -12,10 +12,10 @@ _data = {
 point_count = 5
 
 [node name="Main" type="Node"]
-script = ExtResource("1_nq3up")
-mob_scene = ExtResource("2_nw606")
+script = ExtResource("1_aq0a0")
+mob_scene = ExtResource("2_buypo")
 
-[node name="Player" parent="." instance=ExtResource("1_2ywsv")]
+[node name="Player" parent="." instance=ExtResource("3_nvqf1")]
 position = Vector2(281, 326)
 
 [node name="ElapsedTimer" type="Timer" parent="."]
@@ -36,7 +36,7 @@ curve = SubResource("Curve2D_x8quo")
 position = Vector2(-3, -4)
 rotation = 0.00346619
 
-[node name="HUD" parent="." instance=ExtResource("4_6iigs")]
+[node name="HUD" parent="." instance=ExtResource("4_hc2h3")]
 
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="ElapsedTimer" to="." method="_on_elapsed_timer_timeout"]

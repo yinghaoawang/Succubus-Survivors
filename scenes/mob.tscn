@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://drmaca26pjuuf"]
+[gd_scene load_steps=5 format=3 uid="uid://drmaca26pjuuf"]
 
-[ext_resource type="Texture2D" uid="uid://dpfibngsalhdd" path="res://mob1.png" id="1_76kvt"]
+[ext_resource type="Script" path="res://scripts/mob.gd" id="1_ohsab"]
+[ext_resource type="Texture2D" uid="uid://dpfibngsalhdd" path="res://sprites/mob1.png" id="2_o7j77"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_shsow"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_76kvt")
+"texture": ExtResource("2_o7j77")
 }],
 "loop": true,
 "name": &"default",
@@ -21,6 +22,7 @@ height = 36.0
 position = Vector2(456, 263)
 collision_mask = 0
 gravity_scale = 0.0
+script = ExtResource("1_ohsab")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
