@@ -44,4 +44,3 @@ func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
-

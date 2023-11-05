@@ -6,8 +6,7 @@ var time
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	new_game()
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -17,14 +16,19 @@ func _process(delta):
 func game_over():
 	$ElapsedTimer.stop()
 	$MobTimer.stop()
+	$HUD.show_game_over()
 
 func new_game():
 	time = 0
 	$Player.start($StartPosition.position)
+	$HUD.update_score(time)
+	$HUD.show_message("Get Ready")
 	$StartTimer.start()
+
 
 func _on_elapsed_timer_timeout():
 	time += 1
+	$HUD.update_score(time)
 	print(time)
 
 func _on_start_timer_timeout():
