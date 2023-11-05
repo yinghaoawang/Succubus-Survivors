@@ -2,6 +2,7 @@ extends Area2D
 signal hit
 
 @export var speed = 400 # How fast the player will move (pixels/sec).
+@export var Projectile : PackedScene
 var screen_size # Size of the game window.
 
 # Called when the node enters the scene tree for the first time.
@@ -32,6 +33,9 @@ func _process(delta):
 	if velocity.x != 0:
 		$AnimatedSprite2D.animation = "walk"
 		$AnimatedSprite2D.flip_h = velocity.x < 0
+		
+	if Input.is_action_just_pressed("shoot"):
+		shoot()
 
 
 func _on_body_entered(body):
@@ -44,3 +48,7 @@ func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
+	
+func shoot():
+	var projectile = Projectile.instantiate()
+	add_child(projectile)

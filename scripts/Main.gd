@@ -17,8 +17,10 @@ func game_over():
 	$ElapsedTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()
+	
 
 func new_game():
+	get_tree().call_group("mobs", "queue_free") # Clear mobs
 	time = 0
 	$Player.start($StartPosition.position)
 	$HUD.update_score(time)
@@ -60,3 +62,7 @@ func _on_mob_timer_timeout():
 
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)
+
+
+func _on_projectile_body_entered(body):
+	pass # Replace with function body.
