@@ -1,17 +1,17 @@
 [gd_scene load_steps=6 format=3 uid="uid://cl1mmdds7sbyw"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_dw7k7"]
-[ext_resource type="Texture2D" uid="uid://bm6mwbqjtatq" path="res://good_walk1.png" id="1_u7jua"]
-[ext_resource type="Texture2D" uid="uid://bkt63pyj5qce1" path="res://good_walk2.png" id="2_xoj44"]
+[ext_resource type="Script" path="res://player.gd" id="1_y4xc4"]
+[ext_resource type="Texture2D" uid="uid://bm6mwbqjtatq" path="res://good_walk1.png" id="2_qga28"]
+[ext_resource type="Texture2D" uid="uid://bkt63pyj5qce1" path="res://good_walk2.png" id="3_k4w84"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_nfavc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_u7jua")
+"texture": ExtResource("2_qga28")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_xoj44")
+"texture": ExtResource("3_k4w84")
 }],
 "loop": true,
 "name": &"walk",
@@ -24,7 +24,7 @@ height = 60.0
 
 [node name="Player" type="Area2D"]
 position = Vector2(486, 231)
-script = ExtResource("1_dw7k7")
+script = ExtResource("1_y4xc4")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -37,4 +37,3 @@ position = Vector2(-1, -3)
 shape = SubResource("CapsuleShape2D_gc4eu")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
-[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
