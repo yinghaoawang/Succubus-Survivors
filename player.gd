@@ -8,7 +8,6 @@ var screen_size # Size of the game window.
 func _ready():
 	screen_size = get_viewport_rect().size
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	var velocity = Vector2.ZERO # The player's movement vector.
@@ -32,8 +31,6 @@ func _process(delta):
 	
 	if velocity.x != 0:
 		$AnimatedSprite2D.animation = "walk"
-		$AnimatedSprite2D.flip_v = false
-		# See the note below about boolean assignment.
 		$AnimatedSprite2D.flip_h = velocity.x < 0
 
 
@@ -43,7 +40,8 @@ func _on_body_entered(body):
 	# Must be deferred as we can't change physics properties on a physics callback.
 	$CollisionShape2D.set_deferred("disabled", true)
 
-func start(pos):
-	position = pos
-	show()
-	$CollisionShape2D.disabled = false
+# func start(pos):
+#	position = pos
+#	show()
+#	$CollisionShape2D.disabled = false
+

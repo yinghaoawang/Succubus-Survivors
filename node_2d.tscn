@@ -37,3 +37,4 @@ position = Vector2(-1, -3)
 shape = SubResource("CapsuleShape2D_gc4eu")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
