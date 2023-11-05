@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://i02j1vjryb8i"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_aq0a0"]
-[ext_resource type="PackedScene" uid="uid://drmaca26pjuuf" path="res://scenes/Mob.tscn" id="2_buypo"]
-[ext_resource type="PackedScene" uid="uid://cl1mmdds7sbyw" path="res://scenes/Player.tscn" id="3_nvqf1"]
+[ext_resource type="PackedScene" uid="uid://drmaca26pjuuf" path="res://scenes/Mob.tscn" id="2_55px1"]
+[ext_resource type="PackedScene" uid="uid://sbyl10boovbj" path="res://scenes/Player.tscn" id="3_nvqf1"]
 [ext_resource type="PackedScene" uid="uid://ciikr3q5806gn" path="res://scenes/HUD.tscn" id="4_hc2h3"]
 
 [sub_resource type="Curve2D" id="Curve2D_x8quo"]
@@ -13,10 +13,9 @@ point_count = 5
 
 [node name="Main" type="Node"]
 script = ExtResource("1_aq0a0")
-mob_scene = ExtResource("2_buypo")
+mob_scene = ExtResource("2_55px1")
 
 [node name="Player" parent="." instance=ExtResource("3_nvqf1")]
-position = Vector2(281, 326)
 
 [node name="ElapsedTimer" type="Timer" parent="."]
 

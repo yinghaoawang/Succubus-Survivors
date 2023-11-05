@@ -3,11 +3,14 @@ signal hit
 
 @export var speed = 400 # How fast the player will move (pixels/sec).
 @export var Projectile : PackedScene
+var world
+
 var screen_size # Size of the game window.
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
+	world = get_tree().get_root()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -32,10 +35,11 @@ func _process(delta):
 	
 	if velocity.x != 0:
 		$AnimatedSprite2D.animation = "walk"
-		$AnimatedSprite2D.flip_h = velocity.x < 0
+		self.scale.x = -1 if (velocity.x < 0) else 1
 		
 	if Input.is_action_just_pressed("shoot"):
-		shoot()
+		if self.visible:
+			shoot()
 
 
 func _on_body_entered(body):
@@ -51,4 +55,6 @@ func start(pos):
 	
 func shoot():
 	var projectile = Projectile.instantiate()
-	add_child(projectile)
+	projectile.position = $Muzzle.get_global_position()
+	projectile.set_direction(Vector2(1, 0) * self.scale.x)
+	world.add_child(projectile)
