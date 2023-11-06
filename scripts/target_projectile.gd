@@ -6,7 +6,7 @@ var direction
 func set_direction(d):
 	direction = d
 
-func _physics_process(delta):
+func _process(delta):
 	position += direction * speed * delta
 
 func _on_body_entered(body):

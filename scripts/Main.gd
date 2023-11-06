@@ -1,8 +1,7 @@
 extends Node
 
-@export var mob_scene: PackedScene
+@export var mob_scene: PackedScene = preload("res://scenes/Mob.tscn")
 var time
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,21 +11,19 @@ func _ready():
 func _process(delta):
 	pass
 
-
 func game_over():
 	$ElapsedTimer.stop()
 	$MobTimer.stop()
 	$HUD.show_game_over()
-	
 
 func new_game():
 	get_tree().call_group("mobs", "queue_free") # Clear mobs
+	get_tree().call_group("projectiles", "queue_free") # Clear projectiles
 	time = 0
 	$Player.start($StartPosition.position)
 	$HUD.update_score(time)
 	$HUD.show_message("Get Ready")
 	$StartTimer.start()
-
 
 func _on_elapsed_timer_timeout():
 	time += 1
