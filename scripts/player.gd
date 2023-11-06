@@ -36,10 +36,8 @@ func _process(delta):
 	if velocity.x != 0:
 		$AnimatedSprite2D.animation = "walk"
 		self.scale.x = -1 if (velocity.x < 0) else 1
-		
-	if Input.is_action_just_pressed("shoot"):
-		if self.visible:
-			shoot()
+			
+
 
 
 func _on_body_entered(body):
@@ -54,7 +52,27 @@ func start(pos):
 	$CollisionShape2D.disabled = false
 	
 func shoot():
+	# TODO: Also remove the bullets that miss so game doesn't crash or slow down
+	if !self.visible:
+		return
+	
+	var mob_group = get_tree().get_nodes_in_group("mobs")
+	var closest_mob = null
+	var closest_distance = 9999999  # Initialize to a large value
+	
+	for mob in mob_group:
+		var mob_position = mob.global_position
+		var distance = mob_position.distance_to(position)
+		
+		if distance < closest_distance:
+			closest_mob = mob
+			closest_distance = distance
+
+	if closest_mob == null:
+		return
+
 	var projectile = Projectile.instantiate()
-	projectile.position = $Muzzle.get_global_position()
-	projectile.set_direction(Vector2(1, 0) * self.scale.x)
+	projectile.position = self.get_global_position()
+	projectile.set_direction((closest_mob.position - position).normalized())
 	world.add_child(projectile)
+	

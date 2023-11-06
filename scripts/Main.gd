@@ -31,7 +31,6 @@ func new_game():
 func _on_elapsed_timer_timeout():
 	time += 1
 	$HUD.update_score(time)
-	print(time)
 
 func _on_start_timer_timeout():
 	$MobTimer.start()
@@ -66,3 +65,7 @@ func _on_mob_timer_timeout():
 
 func _on_projectile_body_entered(body):
 	pass # Replace with function body.
+
+
+func _on_star_timer_timeout():
+	$Player.shoot()

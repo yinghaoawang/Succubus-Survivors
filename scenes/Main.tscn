@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://i02j1vjryb8i"]
 
 [ext_resource type="Script" path="res://scripts/Main.gd" id="1_aq0a0"]
-[ext_resource type="PackedScene" uid="uid://drmaca26pjuuf" path="res://scenes/Mob.tscn" id="2_55px1"]
+[ext_resource type="PackedScene" uid="uid://drmaca26pjuuf" path="res://scenes/mob.tscn" id="2_55px1"]
 [ext_resource type="PackedScene" uid="uid://sbyl10boovbj" path="res://scenes/Player.tscn" id="3_nvqf1"]
 [ext_resource type="PackedScene" uid="uid://ciikr3q5806gn" path="res://scenes/HUD.tscn" id="4_hc2h3"]
 
@@ -25,6 +25,9 @@ one_shot = true
 [node name="MobTimer" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="StarTimer" type="Timer" parent="."]
+autostart = true
+
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(583, 276)
 
@@ -41,4 +44,5 @@ rotation = 0.00346619
 [connection signal="timeout" from="ElapsedTimer" to="." method="_on_elapsed_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
+[connection signal="timeout" from="StarTimer" to="." method="_on_star_timer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
