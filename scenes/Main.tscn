@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://i02j1vjryb8i"]
+[gd_scene load_steps=6 format=3 uid="uid://i02j1vjryb8i"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_dbnsj"]
 [ext_resource type="PackedScene" uid="uid://ddq61ipdadwe4" path="res://scenes/Player.tscn" id="3_nvqf1"]
 [ext_resource type="PackedScene" uid="uid://ciikr3q5806gn" path="res://scenes/HUD.tscn" id="4_hc2h3"]
+[ext_resource type="PackedScene" uid="uid://b3utnax8s52a" path="res://scenes/PowerUp.tscn" id="5_u6bmt"]
 
 [sub_resource type="Curve2D" id="Curve2D_x8quo"]
 _data = {
@@ -37,6 +38,9 @@ position = Vector2(-3, -4)
 rotation = 0.00346619
 
 [node name="HUD" parent="." instance=ExtResource("4_hc2h3")]
+
+[node name="PowerUp" parent="." instance=ExtResource("5_u6bmt")]
+collision_mask = 1
 
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="ElapsedTimer" to="." method="_on_elapsed_timer_timeout"]

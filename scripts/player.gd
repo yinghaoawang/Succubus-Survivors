@@ -78,4 +78,3 @@ func shoot():
 	projectile.position = self.get_global_position()
 	projectile.set_direction((closest_mob.position - position).normalized())
 	world.add_child(projectile)
-	
