@@ -2,8 +2,8 @@ extends Area2D
 signal hit
 
 @export var speed = 400 # How fast the player will move (pixels/sec).
-@export var TargetProjectile: PackedScene = preload("res://scenes/TargetProjectile.tscn")
-@export var OrbitProjectile: PackedScene = preload("res://scenes/OrbitProjectile.tscn")
+@export var TargetProjectile: PackedScene = preload("res://scenes/projectiles/TargetProjectile.tscn")
+@export var OrbitProjectile: PackedScene = preload("res://scenes/projectiles/OrbitProjectile.tscn")
 var world
 
 var screen_size # Size of the game window.
