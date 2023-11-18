@@ -11,5 +11,8 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.is_in_group("mobs"):
+		body.emit_signal("mob_killed")
+		queue_free()
 		body.queue_free()
 	queue_free()
+

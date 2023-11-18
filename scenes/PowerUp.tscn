@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3utnax8s52a"]
+[gd_scene load_steps=5 format=3 uid="uid://b3utnax8s52a"]
 
 [ext_resource type="Texture2D" uid="uid://ctk8nofmdrg0i" path="res://sprites/icon.svg" id="1_26ykr"]
 [ext_resource type="Script" path="res://scripts/power_up.gd" id="1_byix1"]
+[ext_resource type="PackedScene" uid="uid://cre5lsgsk2cqe" path="res://scenes/projectiles/OrbitProjectile.tscn" id="2_7byvr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wi4po"]
 size = Vector2(38, 38)
@@ -10,6 +11,7 @@ size = Vector2(38, 38)
 position = Vector2(-163, -14)
 collision_mask = 0
 script = ExtResource("1_byix1")
+OrbitProjectile = ExtResource("2_7byvr")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

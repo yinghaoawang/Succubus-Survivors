@@ -1,5 +1,7 @@
 extends RigidBody2D
 
+signal mob_killed
+
 var player
 const MOVE_SPEED = 100  # Adjust the mob's movement speed
 
@@ -17,3 +19,4 @@ func _process(delta):
 	
 func set_player(_player):
 	player = _player
+

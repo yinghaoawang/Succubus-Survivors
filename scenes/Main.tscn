@@ -39,12 +39,14 @@ rotation = 0.00346619
 
 [node name="HUD" parent="." instance=ExtResource("4_hc2h3")]
 
-[node name="PowerUp" parent="." instance=ExtResource("5_u6bmt")]
+[node name="PowerUp" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_u6bmt")]
 collision_mask = 1
+player = NodePath("../Player")
 
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="timeout" from="ElapsedTimer" to="." method="_on_elapsed_timer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]
 [connection signal="timeout" from="StarTimer" to="." method="_on_star_timer_timeout"]
+[connection signal="mob_killed" from="HUD" to="." method="_on_hud_mob_killed"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]

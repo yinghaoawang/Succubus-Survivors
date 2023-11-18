@@ -1,9 +1,12 @@
 extends Area2D
 
+@export var player : Area2D
+@export var OrbitProjectile: PackedScene
+var world
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	world = get_tree().get_root()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -12,4 +15,9 @@ func _process(delta):
 
 
 func _on_area_entered(area):
-	self.queue_free()
+	if player == area:
+		queue_free()
+		
+		var orbit_projectile = OrbitProjectile.instantiate()
+		orbit_projectile.set_target(player)
+		world.add_child(orbit_projectile)

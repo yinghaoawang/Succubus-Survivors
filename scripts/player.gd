@@ -4,14 +4,16 @@ signal hit
 @export var speed = 400 # How fast the player will move (pixels/sec).
 @export var TargetProjectile: PackedScene = preload("res://scenes/projectiles/TargetProjectile.tscn")
 @export var OrbitProjectile: PackedScene = preload("res://scenes/projectiles/OrbitProjectile.tscn")
-var world
-
+var main
 var screen_size # Size of the game window.
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
-	world = get_tree().get_root()
+	
+
+func set_main(_main):
+	main = _main
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -50,9 +52,6 @@ func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
-	var orbit_projectile = OrbitProjectile.instantiate()
-	orbit_projectile.set_target(self)
-	world.add_child(orbit_projectile)
 	
 func shoot():
 	# TODO: Also remove the bullets that miss so game doesn't crash or slow down
@@ -77,4 +76,7 @@ func shoot():
 	var projectile = TargetProjectile.instantiate()
 	projectile.position = self.get_global_position()
 	projectile.set_direction((closest_mob.position - position).normalized())
-	world.add_child(projectile)
+	main.add_child(projectile)
+	
+	
+
