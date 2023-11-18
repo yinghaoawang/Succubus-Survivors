@@ -1,6 +1,7 @@
 extends Node
 
-@export var mob_scene: PackedScene = preload("res://scenes/Mob.tscn")
+@export var MobScene: PackedScene = preload("res://scenes/Mob.tscn")
+@export var OrbitPowerUp: PackedScene = preload("res://scenes/powerUps/OrbitPowerUp.tscn")
 var time
 var kill_count
 
@@ -20,12 +21,17 @@ func game_over():
 func new_game():
 	get_tree().call_group("mobs", "queue_free") # Clear mobs
 	get_tree().call_group("projectiles", "queue_free") # Clear projectiles
+	get_tree().call_group("powerUps", "queue_free")
 	time = 0
 	kill_count = 0
 	$Player.start($StartPosition.position)
 	$HUD.update_score(time)
 	$HUD.show_message("Get Ready")
 	$HUD.update_kill_counter(kill_count)
+	var orbit_power_up = OrbitPowerUp.instantiate()
+	orbit_power_up.set_position(Vector2(500, 500))
+	orbit_power_up.set_player($Player)
+	add_child(orbit_power_up)
 	$StartTimer.start()
 
 func _on_elapsed_timer_timeout():
@@ -38,7 +44,7 @@ func _on_start_timer_timeout():
 
 func _on_mob_timer_timeout():
 	# Create a new instance of the Mob scene.
-	var mob = mob_scene.instantiate()
+	var mob = MobScene.instantiate()
 	mob.set_player($Player)
 	mob.mob_killed.connect(on_mob_killed)
 

@@ -42,16 +42,18 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	hide() # Player disappears after being hit.
-	hit.emit()
-	# Must be deferred as we can't change physics properties on a physics callback.
-	$CollisionShape2D.set_deferred("disabled", true)
-	get_tree().call_group("projectiles", "queue_free") # Clear projectiles
+	if body.is_in_group("mobs"):
+		hide() # Player disappears after being hit.
+		hit.emit()
+		# Must be deferred as we can't change physics properties on a physics callback.
+		$CollisionShape2D.set_deferred("disabled", true)
+		get_tree().call_group("projectiles", "queue_free") # Clear projectiles
 
 func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
+	
 	
 func shoot():
 	# TODO: Also remove the bullets that miss so game doesn't crash or slow down
@@ -79,4 +81,3 @@ func shoot():
 	main.add_child(projectile)
 	
 	
-
