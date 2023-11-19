@@ -13,9 +13,8 @@ func _ready():
 func _process(delta):
 	pass
 
-
-func _on_area_entered(area):
-	if player == area:
+func _on_body_entered(body):
+	if player == body:
 		queue_free()
 		
 		var orbit_projectile = OrbitProjectile.instantiate()

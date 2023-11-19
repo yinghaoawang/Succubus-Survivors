@@ -66,3 +66,7 @@ func _on_star_timer_timeout():
 func on_mob_killed():
 	kill_count += 1
 	$HUD.update_kill_counter(kill_count)
+
+
+func _on_player_hit():
+	game_over()

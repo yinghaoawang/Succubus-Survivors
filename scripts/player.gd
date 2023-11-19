@@ -1,16 +1,15 @@
-extends Area2D
+extends RigidBody2D
+
 signal hit
 
 @export var speed = 400 # How fast the player will move (pixels/sec).
 @export var TargetProjectile: PackedScene = preload("res://scenes/projectiles/TargetProjectile.tscn")
 @export var OrbitProjectile: PackedScene = preload("res://scenes/projectiles/OrbitProjectile.tscn")
 var main
-var screen_size # Size of the game window.
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	screen_size = get_viewport_rect().size
-	
+	pass
 
 func set_main(_main):
 	main = _main
@@ -33,19 +32,21 @@ func _process(delta):
 	else:
 		$AnimatedSprite2D.stop()
 		
-	position += velocity * delta
-	position = position.clamp(Vector2.ZERO, screen_size)
+	if !self.visible:
+		return
+		
+	move_and_collide(Vector2(velocity.x * delta, velocity.y * delta))
+	# position = position.clamp(Vector2.ZERO, screen_size)
 	
 	if velocity.x != 0:
 		$AnimatedSprite2D.animation = "walk"
-		self.scale.x = -1 if (velocity.x < 0) else 1
+		$AnimatedSprite2D.flip_h = true if (velocity.x < 0) else false
 
 
 func _on_body_entered(body):
 	if body.is_in_group("mobs"):
 		hide() # Player disappears after being hit.
 		hit.emit()
-		# Must be deferred as we can't change physics properties on a physics callback.
 		$CollisionShape2D.set_deferred("disabled", true)
 		get_tree().call_group("projectiles", "queue_free") # Clear projectiles
 

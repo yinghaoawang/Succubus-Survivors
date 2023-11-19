@@ -14,5 +14,5 @@ func _on_body_entered(body):
 		body.emit_signal("mob_killed")
 		queue_free()
 		body.queue_free()
-	queue_free()
+		queue_free()
 

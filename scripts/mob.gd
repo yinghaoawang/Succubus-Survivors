@@ -20,3 +20,6 @@ func _process(delta):
 func set_player(_player):
 	player = _player
 
+
+func _on_body_entered(body):
+	print('ehy');

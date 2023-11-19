@@ -9,6 +9,8 @@ height = 38.0
 
 [node name="TargetProjectile" type="Area2D" groups=["projectiles"]]
 position = Vector2(281, 326)
+collision_layer = 8
+collision_mask = 2
 script = ExtResource("1_hjbg6")
 metadata/_edit_group_ = true
 
