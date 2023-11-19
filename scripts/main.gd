@@ -58,15 +58,12 @@ func _on_mob_timer_timeout():
 	# Spawn the mob by adding it to the Main scene.
 	add_child(mob)
 
-
 func _on_star_timer_timeout():
 	$Player.shoot()
-
 
 func on_mob_killed():
 	kill_count += 1
 	$HUD.update_kill_counter(kill_count)
-
 
 func _on_player_hit():
 	game_over()

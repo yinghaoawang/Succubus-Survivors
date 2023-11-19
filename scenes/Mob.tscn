@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://drmaca26pjuuf"]
 
-[ext_resource type="Script" path="res://scripts/mob.gd" id="1_jgpit"]
+[ext_resource type="Script" path="res://scripts/Mob.gd" id="1_27i48"]
 [ext_resource type="Texture2D" uid="uid://dpfibngsalhdd" path="res://sprites/mob1.png" id="2_o7j77"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_shsow"]
@@ -23,7 +23,7 @@ collision_layer = 2
 gravity_scale = 0.0
 contact_monitor = true
 freeze_mode = 1
-script = ExtResource("1_jgpit")
+script = ExtResource("1_27i48")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -32,5 +32,3 @@ sprite_frames = SubResource("SpriteFrames_shsow")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.9, 0.9)
 shape = SubResource("CapsuleShape2D_vsek3")
-
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]

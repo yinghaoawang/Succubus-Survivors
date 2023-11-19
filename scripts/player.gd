@@ -42,13 +42,15 @@ func _process(delta):
 		$AnimatedSprite2D.animation = "walk"
 		$AnimatedSprite2D.flip_h = true if (velocity.x < 0) else false
 
+func kill_player():
+	hide() # Player disappears after being hit.
+	hit.emit()
+	$CollisionShape2D.set_deferred("disabled", true)
+	get_tree().call_group("projectiles", "queue_free") # Clear projectiles
 
 func _on_body_entered(body):
 	if body.is_in_group("mobs"):
-		hide() # Player disappears after being hit.
-		hit.emit()
-		$CollisionShape2D.set_deferred("disabled", true)
-		get_tree().call_group("projectiles", "queue_free") # Clear projectiles
+		kill_player()
 
 func start(pos):
 	position = pos

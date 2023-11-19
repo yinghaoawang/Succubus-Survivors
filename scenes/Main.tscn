@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://i02j1vjryb8i"]
 
-[ext_resource type="Script" path="res://scripts/main.gd" id="1_dbnsj"]
+[ext_resource type="Script" path="res://scripts/Main.gd" id="1_wqwvb"]
 [ext_resource type="PackedScene" uid="uid://dq0gpspc6qsgf" path="res://scenes/Player.tscn" id="3_nvqf1"]
 [ext_resource type="TileSet" uid="uid://csoa7h1ou6twm" path="res://sprites/tileset.tres" id="4_5y7ip"]
 [ext_resource type="PackedScene" uid="uid://ciikr3q5806gn" path="res://scenes/HUD.tscn" id="4_hc2h3"]
@@ -12,7 +12,7 @@ _data = {
 point_count = 6
 
 [node name="Main" type="Node"]
-script = ExtResource("1_dbnsj")
+script = ExtResource("1_wqwvb")
 
 [node name="Player" parent="." instance=ExtResource("3_nvqf1")]
 
@@ -39,7 +39,7 @@ rotation = 0.0100865
 
 [node name="HUD" parent="." instance=ExtResource("4_hc2h3")]
 
-[node name="Wall Tilemap" type="TileMap" parent="."]
+[node name="Tilemap" type="TileMap" parent="."]
 tile_set = ExtResource("4_5y7ip")
 cell_quadrant_size = 32
 format = 2
